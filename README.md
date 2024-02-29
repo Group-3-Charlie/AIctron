@@ -1,3 +1,0 @@
-# AIctron
-
-## Contributors
