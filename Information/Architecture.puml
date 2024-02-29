@@ -1,0 +1,90 @@
+@startuml
+
+title Architecture Diagram of AIctron
+
+skinparam component {
+    BackgroundColor White
+    BorderColor Black
+    ArrowColor Black
+}
+
+package Frontend/Electron{
+    package "Components" {
+        [App]
+        [Upload]
+        [Table]
+        [Download]
+        [Predict]
+    }
+
+    package ReactJs {
+        package Pages {
+            [Home]
+            [UploadPage]
+            [PredictPage]
+        }
+
+        package ReactComponents {
+            [Header]
+            [Footer]
+        }
+        Pages --> [Footer]
+        Pages --> [Header]
+    }
+
+    [App] --> [Home]
+    [Home] <--> [UploadPage]
+    [Home] <--> [PredictPage]
+    [UploadPage] <--> [PredictPage]
+    [UploadPage] --> [Upload]
+    [PredictPage] --> [Predict]
+}
+
+[App] --> [Upload]
+[App] --> [Table]
+[App] --> [Download]
+[App] --> [Predict]
+
+[Upload] --> [Table]
+[Predict] --> [Table]
+[Download] --> [Table]
+
+[Table] --> [Predict]
+
+package Backend {
+    package "Flask" {
+        [app.py]
+    }
+
+    package AI {
+        [model.py]
+        [predict.py]
+    }
+
+    package "CSV" {
+        [dataset.csv]
+    }
+
+    [app.py] --> [model.py]
+    [app.py] --> [predict.py]
+    [app.py] --> [dataset.csv]
+    [model.py] --> [dataset.csv]
+    [predict.py] --> [dataset.csv]
+
+
+    [model.py] --> [app.py]
+
+    [predict.py] --> [app.py]
+
+}
+
+[App] --> [app.py]
+[Upload] --> [app.py]
+[Table] --> [app.py]
+[Download] --> [app.py]
+[Predict] --> [app.py]
+
+
+footer Made by: Arnaud Michel and Quentin Macheda
+
+@enduml
