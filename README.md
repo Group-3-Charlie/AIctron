@@ -16,8 +16,6 @@
 ![shields](https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas&logoColor=white)
 ![shields](https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white)
 
-> [Repository Link](https://github.com/Group-3-Charlie/AIctron)
-
 ## Table of Contents
 - [Description](#description)
 - [Installation](#installation)
