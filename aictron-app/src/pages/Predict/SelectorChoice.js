@@ -7,8 +7,8 @@ const handleSubmit = (e) => {
 
 const SelectorChoice = () => {
 return (
-    <main>
-        <h1>Selector Choice</h1>
+    <main className={"content-page-center"}>
+        <h2>Selector Choice</h2>
         <form action="" method="post" onSubmit={handleSubmit}>
             <button type="submit">Next</button>
         </form>

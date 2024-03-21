@@ -1,0 +1,39 @@
+.home {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-top: 4rem;
+}
+
+.home-content {
+    margin-left: 6rem;
+}
+
+.home-title {
+    font-size: 8.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+
+.comment {
+    margin-top: 4rem;
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(-360deg);
+    }
+}
+
+.home img {
+    animation: rotate 45s linear infinite; /* Rotation infinie sur 5 secondes */
+}
+

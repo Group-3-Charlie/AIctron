@@ -7,8 +7,8 @@ const handleSubmit = (e) => {
 
 const ColumnChoice = () => {
 return (
-    <main>
-        <h1>Column Choice</h1>
+    <main className={"content-page-center"}>
+        <h2>Column Choice</h2>
         <form action="" method="post" onSubmit={handleSubmit}>
             <button type="submit">Next</button>
         </form>

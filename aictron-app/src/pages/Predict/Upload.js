@@ -1,5 +1,7 @@
 import React from 'react';
 
+
+import "./css/Upload.css";
 function handleFileChange(event) {
   event.preventDefault(); // Prevent default form submission
   const file = event.target.files[0];
@@ -33,10 +35,12 @@ function handleFileChange(event) {
 
 const Upload = () => {
   return (
-    <main>
-      <h1>Upload Page</h1>
-      <form id="importCSV" encType="multipart/form-data">
-        <input type="file" id="fileInput" name="file" accept=".csv" onChange={handleFileChange} />
+    <main className={"content-page-center upload"}>
+      <h2>Predict the Future</h2>
+      <p>Import a .csv dataset and get the best results.</p>
+      <form id="importCSV" encType="multipart/form-data" className="custom-file-input">
+        <label htmlFor="fileInput">Choisir un fichier</label>
+        <input type="file" id="fileInput" name="file" accept=".csv" onChange={handleFileChange}/>
       </form>
     </main>
   );

@@ -16,17 +16,17 @@ function handleFileChange(event) {
 
 const NewValues = () => {
 return (
-    <main>
-        <h1>Enter new values or Import CSV</h1>
+    <main className={"content-page-center"}>
+        <h2>Enter new values or Import CSV</h2>
         <form action="" method="post" onSubmit={handleSubmit}>
-            <input type="text" name="input1" placeholder="Input 1" />
-            <input type="text" name="input2" placeholder="Input 2" />
-            <input type="text" name="input3" placeholder="Input 3" />
+            <input type="text" name="input1" placeholder="Input 1"/>
+            <input type="text" name="input2" placeholder="Input 2"/>
+            <input type="text" name="input3" placeholder="Input 3"/>
             <button type="submit">Submit</button>
         </form>
 
         <form id="importCSV" action="backend/post-api" method="post" encType="multipart/form-data">
-            <input type="file" id="fileInput" name="file" accept=".csv" onChange={handleFileChange} />
+            <input type="file" id="fileInput" name="file" accept=".csv" onChange={handleFileChange}/>
         </form>
     </main>
 );
