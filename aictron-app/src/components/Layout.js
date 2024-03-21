@@ -1,11 +1,11 @@
 // Layout.js
 import React from 'react';
 import { Outlet, Link } from "react-router-dom";
-
+import Header from "./Header.js";
 const Layout = () => {
   return (
     <>
-      <header>HEADER</header>
+      <Header />
 
       <Outlet />
 

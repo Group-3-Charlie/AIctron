@@ -1,7 +1,6 @@
 // App.js
 import React from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-
 import Layout from './components/Layout.js';
 import Home from './pages/Home.js';
 import Upload from './pages/Predict/Upload.js';
@@ -9,6 +8,8 @@ import ColumnChoice from './pages/Predict/ColumnChoice.js';
 import SelectorChoice from './pages/Predict/SelectorChoice.js';
 import NewValues from './pages/Predict/NewValues.js';
 import Result from './pages/Predict/Result.js';
+
+import './App.css';
 
 function App() {
   return (
