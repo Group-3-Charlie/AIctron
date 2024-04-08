@@ -22,7 +22,7 @@ return (
             <input type="text" name="input1" placeholder="Input 1"/>
             <input type="text" name="input2" placeholder="Input 2"/>
             <input type="text" name="input3" placeholder="Input 3"/>
-            <button type="submit">Submit</button>
+            <button className={"input-button"} type="submit">Submit</button>
         </form>
 
         <form id="importCSV" action="backend/post-api" method="post" encType="multipart/form-data">

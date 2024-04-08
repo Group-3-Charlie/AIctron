@@ -10,7 +10,7 @@ return (
     <main className={"content-page-center"}>
         <h2>Column Choice</h2>
         <form action="" method="post" onSubmit={handleSubmit}>
-            <button type="submit">Next</button>
+            <button className={"input-button"} type="submit">Next</button>
         </form>
     </main>
 );
