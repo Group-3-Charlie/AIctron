@@ -1,7 +1,6 @@
 import React from 'react';
-
-
 import "./css/Upload.css";
+
 function handleFileChange(event) {
   event.preventDefault(); // Prevent default form submission
   const file = event.target.files[0];
