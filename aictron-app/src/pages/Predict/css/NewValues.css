@@ -1,0 +1,26 @@
+.content-page-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+}
+
+.content-page-content::after {
+    content: "";
+    width: 2px;
+    background: #767B78;
+    position: absolute;
+    left: 50%;
+    height: 24%;
+}
+
+.input-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 50%;
+}
+
+.custom-file-input {
+}

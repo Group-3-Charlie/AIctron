@@ -1,11 +1,8 @@
+# Contributing to the Alctron project
 
 
-Contributing to the Alctron project
-===================================
 
-
-Welcome!
---------
+## Welcome!
 
 Thank you for assisting in our project!
 
@@ -13,21 +10,18 @@ Before starting, please check [README.md](https://github.com/Group-3-Charlie/AIc
 
 
 
-Summary
--------
+## Summary
 
 The Alctron project allows a user to upload a .csv, it will then send it to our AI to be processed and then can be returned with the required results entered into the .csv file, or just show the results.
 
 
 
-Pull Requests
--------------
+## Pull Requests
 
 All information on pull and issue requests can be found [here!](https://github.com/Group-3-Charlie/AIctron/tree/main/.github)  
 After a request is issued, our team will look into it and then respond to you issue at an appropriate time
 
-Code of Conduct
----------------
+## Code of Conduct
 
 Examples of behavior we love to have on our project:
 
@@ -48,7 +42,6 @@ Examples of behavior we do not want on our project:
 
 
 
-Thanking you in advance!
-------------------------
+## Thanking you in advance!
 
 Thank you for considering joining our project - The Alctron Team
