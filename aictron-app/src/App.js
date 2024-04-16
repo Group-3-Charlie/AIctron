@@ -9,7 +9,7 @@ import SelectorChoice from './pages/Predict/SelectorChoice.js';
 import NewValues from './pages/Predict/NewValues.js';
 import Result from './pages/Predict/Result.js';
 
-import './App.css';
+import './assets/style/main.css';
 
 function App() {
   return (

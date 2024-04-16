@@ -1,5 +1,5 @@
 import React from 'react';
-import "./css/NewValues.css";
+import "../../assets/style/new-values.css";
 
 const handleSubmit = (e) => {
     e.preventDefault();
