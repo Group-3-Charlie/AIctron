@@ -1,7 +1,6 @@
 import React from 'react';
 
-const handleSubmit = (e) => {
-    e.preventDefault();
+const handleSubmit = () => {
     window.location.href = "/predict/new-values";
 };
 
@@ -9,9 +8,7 @@ const SelectorChoice = () => {
 return (
     <main className={"content-page-center"}>
         <h2>Selector Choice</h2>
-        <form action="" method="post" onSubmit={handleSubmit}>
-            <button className={"input-button"} type="submit">Next</button>
-        </form>
+        <button className={'input-button'} onClick={handleSubmit}>Next</button>
     </main>
 );
 };

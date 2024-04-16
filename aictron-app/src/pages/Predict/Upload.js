@@ -1,5 +1,5 @@
 import React from 'react';
-import "./css/Upload.css";
+import "../../assets/style/upload.css";
 
 function handleFileChange(event) {
   event.preventDefault(); // Prevent default form submission
