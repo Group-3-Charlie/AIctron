@@ -4,10 +4,12 @@ import "../../assets/style/column-choice.css";
 const ColumnChoice = () => {
   const [columns, setColumns] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [selectedColumn, setSelectedColumn] = useState(-1);
+  const [selectedColumnIndex, setSelectedColumnIndex] = useState(-1);
+  const [selectedColumnText, setSelectedColumnText] = useState('');
 
-  const handleClick = (index) => {
-    setSelectedColumn(index);
+  const handleClick = (index, text) => {
+    setSelectedColumnIndex(index);
+    setSelectedColumnText(text);
   };
 
   useEffect(() => {
@@ -24,9 +26,32 @@ const ColumnChoice = () => {
       });
   }, []); // Empty array as second argument means this effect runs once on component mount
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    window.location.href = '/predict/selector-choice';
+  const handleSubmit = () => {
+    if (selectedColumnIndex !== -1) {
+        useEffect(() => {
+            fetch('http://127.0.0.1:4567/send_chosen_column', {
+                method: 'POST',
+                body: selectedColumnIndex,
+            })
+            .then(response => {
+                if (response.ok) {
+                    return response.json(); 
+                } else {
+                    throw new Error('Failed to send the chosen column');
+                }
+            })
+            .then(data => {
+                // Handle successful response (data contains JSON response from server)
+                console.log('Response from server:', data);
+                // Redirect user to another page (if needed)
+                window.location.href = '/predict/selector-choice';
+            })
+            .catch(error => {
+                // Handle error (e.g., show an error message)
+                console.error('Error when trying to send the chosen column:', error);
+            });
+        });
+    }
   };
 
   return (
@@ -39,15 +64,13 @@ const ColumnChoice = () => {
             <p>Choose the values's column you want to predict.</p>
             <div id="columns-container">
             {columns.map((column, index) => (
-                <button className={selectedColumn === index ? 'orange-btn selected' : 'orange-btn'} key={index} onClick={() => handleClick(index)} >{column}</button>
+                <button className={selectedColumnIndex === index ? 'orange-btn selected' : 'orange-btn'} key={index} onClick={() => handleClick(index, column)} >{column}</button>
             ))}
             </div>
         </>
       )}
 
-      <form action="" method="post" onSubmit={handleSubmit}>
-        <button className={'input-button'} type="submit">Next</button>
-      </form>
+        <button className={(selectedColumnIndex !== -1) ? 'input-button' : 'input-button disabled'} onClick={handleSubmit}>Next</button>
     </main>
   );
 };
