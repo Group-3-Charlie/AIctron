@@ -14,7 +14,7 @@ const ColumnChoice = () => {
 
   // Get the column names
   useEffect(() => {
-    fetch('http://127.0.0.1:4567/get_columns', { method: 'GET' })
+    fetch('http://api.aictron.arnaudmichel.fr/get_columns', { method: 'GET' })
       .then((response) => response.json())
       .then((columnData) => {
         // Set the const columns with response data
@@ -31,7 +31,7 @@ const ColumnChoice = () => {
   const handleSubmit = () => {
     if (selectedColumnIndex !== -1) {
       try {
-        fetch('http://127.0.0.1:4567/select_target', {
+        fetch('http://api.aictron.arnaudmichel.fr/select_target', {
           method: 'POST',
           body: selectedColumnText,
         })
