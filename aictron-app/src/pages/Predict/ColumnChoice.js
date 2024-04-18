@@ -12,6 +12,7 @@ const ColumnChoice = () => {
     setSelectedColumnText(text);
   };
 
+  // Get the column names
   useEffect(() => {
     fetch('http://127.0.0.1:4567/get_columns', { method: 'GET' })
       .then((response) => response.json())
@@ -26,31 +27,29 @@ const ColumnChoice = () => {
       });
   }, []); // Empty array as second argument means this effect runs once on component mount
 
+  // Send the chosen column to the backend
   const handleSubmit = () => {
     if (selectedColumnIndex !== -1) {
-        useEffect(() => {
-            fetch('http://127.0.0.1:4567/send_chosen_column', {
-                method: 'POST',
-                body: selectedColumnIndex,
-            })
-            .then(response => {
-                if (response.ok) {
-                    return response.json(); 
-                } else {
-                    throw new Error('Failed to send the chosen column');
-                }
-            })
-            .then(data => {
-                // Handle successful response (data contains JSON response from server)
-                console.log('Response from server:', data);
-                // Redirect user to another page (if needed)
-                window.location.href = '/predict/selector-choice';
-            })
-            .catch(error => {
-                // Handle error (e.g., show an error message)
-                console.error('Error when trying to send the chosen column:', error);
-            });
+      try {
+        fetch('http://127.0.0.1:4567/select_target', {
+          method: 'POST',
+          body: selectedColumnText,
+        })
+        .then(response => response.json())
+        .then(data => {
+            if ('error' in data) {
+                throw new Error(data.error);
+            }
+            // Redirect user to another page (if needed)
+            window.location.href = '/predict/new-values';
+        })
+        .catch(error => {
+            // Handle error (e.g., show an error message)
+            console.error('Error when trying to send the chosen column:', error);
         });
+      } catch (error) {
+        console.error('Error when trying to send the chosen column:', error);
+      }
     }
   };
 

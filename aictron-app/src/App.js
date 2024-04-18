@@ -5,7 +5,6 @@ import Layout from './components/Layout.js';
 import Home from './pages/Home.js';
 import Upload from './pages/Predict/Upload.js';
 import ColumnChoice from './pages/Predict/ColumnChoice.js';
-import SelectorChoice from './pages/Predict/SelectorChoice.js';
 import NewValues from './pages/Predict/NewValues.js';
 import Result from './pages/Predict/Result.js';
 
@@ -20,7 +19,6 @@ function App() {
           <Route path="predict">
             <Route index element={<Upload />} />
             <Route path="column-choice" element={<ColumnChoice />} />
-            <Route path="selector-choice" element={<SelectorChoice />} />
             <Route path="new-values" element={<NewValues />} />
             <Route path="result" element={<Result />} />
           </Route>
