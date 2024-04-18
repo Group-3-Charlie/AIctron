@@ -1,38 +1,66 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import "../../assets/style/new-values.css";
 
-const handleSubmit = (e) => {
-    e.preventDefault();
-    window.location.href = "/predict/result";
-};
-
-function handleFileChange(event) {
-    const file = event.target.files[0];
-    if (file) {
-        document.getElementById('importCSV').submit();
-        window.location.href = "/predict/result";
-    }
-}
-
-
 const NewValues = () => {
+    const [columns, setColumns] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
+
+    // Get the column names
+    useEffect(() => {
+        fetch('http://127.0.0.1:4567/get_columns', { method: 'GET' })
+        .then((response) => response.json())
+        .then((columnData) => {
+            // Set the const columns with response data
+            setColumns(columnData.columns);
+            setIsLoading(false);
+        })
+        .catch((error) => {
+            console.error('Error when trying to get the columns through API:', error);
+            setIsLoading(false);
+        });
+    }, []); // Empty array as second argument means this effect runs once on component mount
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        window.location.href = "/predict/result";
+    };
+    
+    function handleFileChange(event) {
+        const file = event.target.files[0];
+        if (file) {
+            document.getElementById('importCSV').submit();
+            window.location.href = "/predict/result";
+        }
+    }
+
     return (
-        <main className={"content-page-center"}>
-            <h2>Enter new values or Import CSV</h2>
-            <p>Enter the values for 1 prediction <strong>or</strong> import a new (pre-filled) .csv file.</p>
-            <br/>
-            <div className={"content-page-content"}>
-                <form action="" method="post" onSubmit={handleSubmit} className={"input-form"}>
-                    <input type="text" name="input1" placeholder="Input 1"/>
-                    <input type="text" name="input2" placeholder="Input 2"/>
-                    <input type="text" name="input3" placeholder="Input 3"/>
-                    <button className={"input-button"} type="submit">Submit</button>
+        <main className={"wrap"}>
+            <h1>Predict the future</h1>
+            <p>Enter the values for one prediction <strong>or</strong> import a new (pre-filled) .csv file.</p>
+
+            <div id="forms-container">
+                <form className={"text-option"} action="" method="post" onSubmit={handleSubmit}>
+                    {isLoading ? (
+                        <p>Loading...</p>
+                    ) : (
+                        <>
+                            {columns.map((column, index) => (
+                                <div className="input-container" key={index}>
+                                    <label>{column}</label>
+                                    <input type="text" className={'orange-input'} name={column} placeholder="Enter the value"/>
+                                </div>
+                            ))}
+                        </>
+                    )}
+                    <button className={"input-btn"} type="submit">Submit</button>
                 </form>
 
-                <div className={"input-form"}>
+                <span className="se-line"></span>
+
+                <div className={"file-option"}>
                     <p>If you need to get many results at once, import your (pre-filled) .csv file. </p>
                     <form id="importCSV" encType="multipart/form-data" className="custom-file-input">
-                        <label htmlFor="fileInput">Choisir un fichier</label>
+                        <label className="input-btn" htmlFor="fileInput">Upload a file</label>
                         <input type="file" id="fileInput" name="file" accept=".csv" onChange={handleFileChange}/>
                     </form>
                 </div>

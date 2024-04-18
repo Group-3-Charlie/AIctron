@@ -54,8 +54,8 @@ const ColumnChoice = () => {
   };
 
   return (
-    <main className={'content-page-center'}>
-      <h2>Column Choice</h2>
+    <main className={'wrap'}>
+      <h1>Predict the future</h1>
       {isLoading ? (
         <p>Loading columns...</p>
       ) : (
@@ -69,7 +69,7 @@ const ColumnChoice = () => {
         </>
       )}
 
-        <button className={(selectedColumnIndex !== -1) ? 'input-button' : 'input-button disabled'} onClick={handleSubmit}>Next</button>
+        <button className={(selectedColumnIndex !== -1) ? 'input-btn' : 'input-btn disabled'} onClick={handleSubmit}>Next</button>
     </main>
   );
 };

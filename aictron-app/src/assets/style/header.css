@@ -1,20 +1,21 @@
-.header {
+header > nav {
     display: flex;
     justify-content: center;
-    padding: 32px 0;
-}
-
-.nav-links {
-    display: flex;
-    justify-content: space-around;
     align-items: center;
-    padding: 10px 20px;
-    width: 512px;
-    font-size: 1.2rem;
-    font-weight: 700;
+    gap: 2rem;
+
+    padding: 1.4rem 0;
 }
 
+header > nav img {
+    width: 2rem;
+}
 
-.header img {
-    width: 40px;
+header > nav a {
+    color: var(--white);
+
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-decoration: none;
+    text-transform: uppercase;
 }
