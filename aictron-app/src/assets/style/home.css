@@ -1,4 +1,15 @@
-.home {
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+#home {
+    min-height: 60vh;
+
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -6,34 +17,35 @@
     margin-top: 4rem;
 }
 
-.home-content {
+#home .home-content {
     margin-left: 6rem;
 }
-
-.home-title {
+#home .home-content h1 {
+    text-align: left;
     font-size: 8.5rem;
     font-weight: 700;
+    margin-top: 0;
     margin-bottom: 1rem;
+    margin-left: 0;
+    margin-right: 0;
+
+    background: linear-gradient(to right, var(--primary-blue), var(--primary-orange), var(--primary-magenta), rgba(0, 0, 0, 0));
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    width: fit-content;
 }
-
-
-.comment {
+#home .home-content > a {
+    display: inline-block;
+    margin-top: 0.4rem;
+}
+#home .comment {
     margin-top: 4rem;
+    font-size: 0.9rem;
     font-style: italic;
-    color: rgba(255, 255, 255, 0.5);
+    color: var(--gray);
 }
-
-
-@keyframes rotate {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(-360deg);
-    }
-}
-
-.home img {
+#home img {
+    width: 22rem;
     animation: rotate 45s linear infinite; /* Rotation infinie sur 5 secondes */
 }
 
