@@ -3,10 +3,12 @@ import React from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from './components/Layout.js';
 import Home from './pages/Home.js';
+import Contribute from './pages/Contribute.js';
 import Upload from './pages/Predict/Upload.js';
 import ColumnChoice from './pages/Predict/ColumnChoice.js';
 import NewValues from './pages/Predict/NewValues.js';
 import Result from './pages/Predict/Result.js';
+
 
 import './assets/style/main.css';
 
@@ -16,6 +18,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
+          <Route path="contribute" element={<Contribute />} />
           <Route path="predict">
             <Route index element={<Upload />} />
             <Route path="column-choice" element={<ColumnChoice />} />
