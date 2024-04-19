@@ -7,7 +7,7 @@ const NewValues = () => {
 
     // Get the column names
     useEffect(() => {
-        fetch('http://127.0.0.1:4567/get_columns', { method: 'GET' })
+        fetch('http://api.aictron.arnaudmichel.fr/get_columns', { method: 'GET' })
         .then((response) => response.json())
         .then((columnData) => {
             // Set the const columns with response data
