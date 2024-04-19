@@ -7,7 +7,8 @@ import Contribute from './pages/Contribute.js';
 import Upload from './pages/Predict/Upload.js';
 import ColumnChoice from './pages/Predict/ColumnChoice.js';
 import NewValues from './pages/Predict/NewValues.js';
-import Result from './pages/Predict/Result.js';
+import ResultText from './pages/Predict/ResultText.js';
+import ResultFile from './pages/Predict/ResultFile.js';
 
 
 import './assets/style/main.css';
@@ -23,7 +24,8 @@ function App() {
             <Route index element={<Upload />} />
             <Route path="column-choice" element={<ColumnChoice />} />
             <Route path="new-values" element={<NewValues />} />
-            <Route path="result" element={<Result />} />
+            <Route path="result-text" element={<ResultText />} />
+            <Route path="result-file" element={<ResultFile />} />
           </Route>
         </Route>
         <Route path="*" element={"ERROR 404 - NOT FOUND"} />
