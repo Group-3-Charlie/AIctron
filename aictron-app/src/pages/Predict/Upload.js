@@ -9,7 +9,7 @@ const Upload = () => {
       const formData = new FormData();
       formData.append('file', file);
 
-      fetch('http://127.0.0.1:4567/upload_csv', {
+      fetch('http://api.aictron.arnaudmichel.fr/upload_csv', {
         method: 'POST',
         body: formData,
       })
