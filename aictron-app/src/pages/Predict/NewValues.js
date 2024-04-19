@@ -22,14 +22,14 @@ const NewValues = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        window.location.href = "/predict/result";
+        window.location.href = "/predict/result-text";
     };
     
     function handleFileChange(event) {
         const file = event.target.files[0];
         if (file) {
             document.getElementById('importCSV').submit();
-            window.location.href = "/predict/result";
+            window.location.href = "/predict/result-file";
         }
     }
 
