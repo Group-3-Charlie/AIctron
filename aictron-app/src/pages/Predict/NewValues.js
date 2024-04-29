@@ -31,10 +31,34 @@ const NewValues = () => {
     };
     
     function handleFileChange(event) {
+        event.preventDefault(); // Prevent default form submission
         const file = event.target.files[0];
+        
         if (file) {
-            document.getElementById('importCSV').submit();
-            window.location.href = "/predict/result-file";
+            const formData = new FormData();
+            formData.append('file', file);
+        
+            fetch((api_dev + '/predict'), {
+                method: 'POST',
+                body: formData,
+            })
+            .then(response => {
+                if (response.ok) {
+                return response.json(); // Parse response JSON if request successful
+                } else {
+                throw new Error('Failed to upload file');
+                }
+            })
+            .then(data => {
+                // Handle successful response (data contains JSON response from server)
+                console.log('Response from server:', data);
+                // Redirect user to another page (if needed)
+                window.location.href = "/predict/result-file";
+            })
+            .catch(error => {
+                // Handle error (e.g., show an error message)
+                console.error('Error uploading file:', error);
+            });
         }
     }
 
