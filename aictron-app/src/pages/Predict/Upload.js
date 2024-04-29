@@ -1,4 +1,5 @@
 import React from 'react';
+import uploadIcon from '../../assets/icons/upload.svg';
 import "../../assets/style/upload.css";
 
 const Upload = () => {
@@ -38,7 +39,7 @@ const Upload = () => {
       <h1>Predict the future</h1>
       <p>Import a .csv dataset and get the best results.</p>
       <form id="importCSV" encType="multipart/form-data" className="custom-file-input">
-        <label className="input-btn" htmlFor="fileInput">Upload a file</label>
+        <label className="input-btn" htmlFor="fileInput"><img src={uploadIcon} alt="Upload icon"/> Upload a file</label>
         <input type="file" id="fileInput" name="file" accept=".csv" onChange={handleFileChange}/>
       </form>
     </main>

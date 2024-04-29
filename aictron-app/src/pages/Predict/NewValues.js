@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react';
+
+import uploadIcon from '../../assets/icons/upload.svg';
 import "../../assets/style/new-values.css";
+
 
 const NewValues = () => {
     const [columns, setColumns] = useState([]);
@@ -60,7 +63,7 @@ const NewValues = () => {
                 <div className={"file-option"}>
                     <p>If you need to get many results at once, import your (pre-filled) .csv file. </p>
                     <form id="importCSV" encType="multipart/form-data" className="custom-file-input">
-                        <label className="input-btn" htmlFor="fileInput">Upload a file</label>
+                        <label className="input-btn" htmlFor="fileInput"><img src={uploadIcon} alt="Upload icon"/>Upload a file</label>
                         <input type="file" id="fileInput" name="file" accept=".csv" onChange={handleFileChange}/>
                     </form>
                 </div>

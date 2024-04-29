@@ -34,17 +34,16 @@
     -webkit-background-clip: text;
     width: fit-content;
 }
-#home .home-content > a {
-    display: inline-block;
-    margin-top: 0.4rem;
+#home .home-content p {
+    margin-bottom: 1.4rem;
 }
 #home .comment {
-    margin-top: 4rem;
+    margin-top: 3rem;
     font-size: 0.9rem;
     font-style: italic;
     color: var(--gray);
 }
-#home img {
+#home > img {
     width: 22rem;
     animation: rotate 45s linear infinite; /* Rotation infinie sur 5 secondes */
 }
