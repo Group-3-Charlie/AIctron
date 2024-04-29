@@ -7,10 +7,12 @@ import "../../assets/style/new-values.css";
 const NewValues = () => {
     const [columns, setColumns] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
+    const api_dev = "http://localhost:4567";
+    const api_prod = "http://api.aictron.arnaudmichel.fr";
 
     // Get the column names
     useEffect(() => {
-        fetch('http://api.aictron.arnaudmichel.fr/get_columns', { method: 'GET' })
+        fetch((api_dev + '/get_columns_without_target'), { method: 'GET' })
         .then((response) => response.json())
         .then((columnData) => {
             // Set the const columns with response data

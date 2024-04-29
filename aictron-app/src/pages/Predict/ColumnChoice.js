@@ -7,6 +7,9 @@ const ColumnChoice = () => {
   const [selectedColumnIndex, setSelectedColumnIndex] = useState(-1);
   const [selectedColumnText, setSelectedColumnText] = useState('');
 
+  const api_dev = "http://localhost:4567";
+  const api_prod = "http://api.aictron.arnaudmichel.fr";
+
   const handleClick = (index, text) => {
     setSelectedColumnIndex(index);
     setSelectedColumnText(text);
@@ -14,7 +17,7 @@ const ColumnChoice = () => {
 
   // Get the column names
   useEffect(() => {
-    fetch('http://api.aictron.arnaudmichel.fr/get_columns', { method: 'GET' })
+    fetch((api_dev + '/get_columns'), { method: 'GET' })
       .then((response) => response.json())
       .then((columnData) => {
         // Set the const columns with response data
@@ -31,7 +34,7 @@ const ColumnChoice = () => {
   const handleSubmit = () => {
     if (selectedColumnIndex !== -1) {
       try {
-        fetch('http://api.aictron.arnaudmichel.fr/select_target', {
+        fetch((api_dev + '/select_target'), {
           method: 'POST',
           body: selectedColumnText,
         })
