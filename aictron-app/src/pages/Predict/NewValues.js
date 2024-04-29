@@ -1,13 +1,18 @@
 import React, { useEffect, useState } from 'react';
+
+import uploadIcon from '../../assets/icons/upload.svg';
 import "../../assets/style/new-values.css";
+
 
 const NewValues = () => {
     const [columns, setColumns] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
+    const api_dev = "http://localhost:4567";
+    const api_prod = "http://api.aictron.arnaudmichel.fr";
 
     // Get the column names
     useEffect(() => {
-        fetch('http://api.aictron.arnaudmichel.fr/get_columns', { method: 'GET' })
+        fetch((api_dev + '/get_columns_without_target'), { method: 'GET' })
         .then((response) => response.json())
         .then((columnData) => {
             // Set the const columns with response data
@@ -26,10 +31,34 @@ const NewValues = () => {
     };
     
     function handleFileChange(event) {
+        event.preventDefault(); // Prevent default form submission
         const file = event.target.files[0];
+        
         if (file) {
-            document.getElementById('importCSV').submit();
-            window.location.href = "/predict/result-file";
+            const formData = new FormData();
+            formData.append('file', file);
+        
+            fetch((api_dev + '/predict'), {
+                method: 'POST',
+                body: formData,
+            })
+            .then(response => {
+                if (response.ok) {
+                return response.json(); // Parse response JSON if request successful
+                } else {
+                throw new Error('Failed to upload file');
+                }
+            })
+            .then(data => {
+                // Handle successful response (data contains JSON response from server)
+                console.log('Response from server:', data);
+                // Redirect user to another page (if needed)
+                window.location.href = "/predict/result-file";
+            })
+            .catch(error => {
+                // Handle error (e.g., show an error message)
+                console.error('Error uploading file:', error);
+            });
         }
     }
 
@@ -60,7 +89,7 @@ const NewValues = () => {
                 <div className={"file-option"}>
                     <p>If you need to get many results at once, import your (pre-filled) .csv file. </p>
                     <form id="importCSV" encType="multipart/form-data" className="custom-file-input">
-                        <label className="input-btn" htmlFor="fileInput">Upload a file</label>
+                        <label className="input-btn" htmlFor="fileInput"><img src={uploadIcon} alt="Upload icon"/>Upload a file</label>
                         <input type="file" id="fileInput" name="file" accept=".csv" onChange={handleFileChange}/>
                     </form>
                 </div>

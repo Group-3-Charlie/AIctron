@@ -48,6 +48,7 @@ h2 {
 
 p {
   font-family: var(--montserrat);
+  line-height: 150%;
 }
 
 a {
