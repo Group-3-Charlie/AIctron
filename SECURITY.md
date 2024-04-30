@@ -43,7 +43,7 @@ When reporting vulnerabilities, please follow these guidelines:
 
 While we make every effort to address security vulnerabilities in a timely manner, please note that our response and resolution times may vary depending on the complexity and severity of the issue. We appreciate your patience and cooperation as we work to ensure the security of our software.
 
-Thank you for helping us keep [Project Name] safe and secure.
+Thank you for helping us keep AIctron safe and secure.
 
 AIctron Security Team
 
