@@ -1,18 +1,16 @@
 import React, { useCallback, useState, useEffect } from 'react';
 import Papa from 'papaparse';
 
+import { env } from '../../env';
 import downloadIcon from '../../assets/icons/download.svg';
 import '../../assets/style/result.css';
 
 const ResultFile = () => {
-  const api_dev = "http://localhost:4567";
-  const api_prod = "http://api.aictron.arnaudmichel.fr";
-
   const [tableRows, setTableRows] = useState([]);
   const [values, setValues] = useState([]);
 
   useEffect(() => {
-    fetch((api_dev + '/get_predictions'), { method: 'GET' })
+    fetch((env + '/get_predictions'), { method: 'GET' })
       .then((response) => response.blob())
       .then((blob) => {
         Papa.parse(blob, {
@@ -40,7 +38,7 @@ const ResultFile = () => {
 
   const handleClick = useCallback(async () => {
     try {
-      const response = await fetch((api_dev + '/get_predictions'), { method: 'GET' });
+      const response = await fetch((env + '/get_predictions'), { method: 'GET' });
       const blob = await response.blob();
 
       // Create a temporary link element and set the href to the file URL

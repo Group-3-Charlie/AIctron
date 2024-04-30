@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+
+import { env } from '../../env';
 import "../../assets/style/column-choice.css";
 
 const ColumnChoice = () => {
@@ -7,9 +9,6 @@ const ColumnChoice = () => {
   const [selectedColumnIndex, setSelectedColumnIndex] = useState(-1);
   const [selectedColumnText, setSelectedColumnText] = useState('');
 
-  const api_dev = "http://localhost:4567";
-  const api_prod = "http://api.aictron.arnaudmichel.fr";
-
   const handleClick = (index, text) => {
     setSelectedColumnIndex(index);
     setSelectedColumnText(text);
@@ -17,7 +16,7 @@ const ColumnChoice = () => {
 
   // Get the column names
   useEffect(() => {
-    fetch((api_dev + '/get_columns'), { method: 'GET' })
+    fetch((env + '/get_columns'), { method: 'GET' })
       .then((response) => response.json())
       .then((columnData) => {
         // Set the const columns with response data
@@ -34,7 +33,7 @@ const ColumnChoice = () => {
   const handleSubmit = () => {
     if (selectedColumnIndex !== -1) {
       try {
-        fetch((api_dev + '/select_target'), {
+        fetch((env + '/select_target'), {
           method: 'POST',
           body: selectedColumnText,
         })
