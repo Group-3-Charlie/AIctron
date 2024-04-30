@@ -4,3 +4,8 @@
     font-weight: 700;
     color: var(--primary-orange);
 }
+
+#result .blue-btn {
+    margin-left: auto;
+    margin-right: auto;
+}
