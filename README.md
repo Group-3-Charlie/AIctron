@@ -44,6 +44,8 @@ To install the app, you will need to have Python installed on your computer. You
 Once Python is installed, you can install the required libraries by running the following command in your terminal:
 
 ```bash
+python3 -m venv venv
+source venv/bin/activate
 pip install -r requirements.txt
 ```
 
@@ -62,7 +64,8 @@ npm install
 To start the app, you will need to run the following command in your terminal:
 
 ```bash
-python3 app.py
+cd code
+python3 __init__.py
 ```
 
 Then, you will need to run the following command in another terminal:
@@ -88,8 +91,6 @@ The project is licensed under the MIT License.
 
 - [Arnaud Michel](https://github.com/MrArnaudMichel)
 - [Quentin Macheda](https://github.com/quentinmacheda)
-- [Aaron Broderick]()
-
 
 ## Acknowledgements
 
