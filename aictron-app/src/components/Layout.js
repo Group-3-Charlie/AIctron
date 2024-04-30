@@ -2,12 +2,14 @@
 import React from 'react';
 import { Outlet, Link } from "react-router-dom";
 import Header from "./Header.js";
+import Footer from "./Footer.js";
 
 const Layout = () => {
   return (
     <>
       <Header />
       <Outlet />
+      <Footer />
     </>
   );
 };
