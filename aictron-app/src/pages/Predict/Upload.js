@@ -1,11 +1,9 @@
 import React from 'react';
+import { env } from '../../env';
 import uploadIcon from '../../assets/icons/upload.svg';
 import "../../assets/style/upload.css";
 
 const Upload = () => {
-  const api_dev = "http://localhost:4567";
-  const api_prod = "http://api.aictron.arnaudmichel.fr";
-  
   function handleFileChange(event) {
     event.preventDefault(); // Prevent default form submission
     const file = event.target.files[0];
@@ -13,7 +11,7 @@ const Upload = () => {
       const formData = new FormData();
       formData.append('file', file);
 
-      fetch((api_dev + '/upload_csv'), {
+      fetch((env + '/upload_csv'), {
         method: 'POST',
         body: formData,
       })

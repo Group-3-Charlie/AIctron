@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
+import { env } from '../../env';
 import uploadIcon from '../../assets/icons/upload.svg';
 import "../../assets/style/new-values.css";
 
@@ -7,12 +8,10 @@ import "../../assets/style/new-values.css";
 const NewValues = () => {
     const [columns, setColumns] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
-    const api_dev = "http://localhost:4567";
-    const api_prod = "http://api.aictron.arnaudmichel.fr";
 
     // Get the column names
     useEffect(() => {
-        fetch((api_dev + '/get_columns_without_target'), { method: 'GET' })
+        fetch((env + '/get_columns_without_target'), { method: 'GET' })
         .then((response) => response.json())
         .then((columnData) => {
             // Set the const columns with response data
@@ -38,7 +37,7 @@ const NewValues = () => {
             const formData = new FormData();
             formData.append('file', file);
         
-            fetch((api_dev + '/predict'), {
+            fetch((env + '/predict'), {
                 method: 'POST',
                 body: formData,
             })
