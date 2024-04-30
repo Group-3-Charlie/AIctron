@@ -4,3 +4,58 @@
     font-weight: 700;
     color: var(--primary-orange);
 }
+
+#result .blue-btn {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Preview CSV */
+#result div#preview {
+    min-width: 30vw;
+    width: 70%;
+    max-width: 70vw;
+    height: 300px; 
+    overflow: auto;
+    
+    border-radius: 10px;
+
+    margin: 3rem auto;
+    filter: drop-shadow(0px 0px 50px rgba(25, 124, 226, 0.1));
+}
+
+#result table {
+    border-collapse: collapse;
+    text-align: left;
+}
+#result table > thead th:first-child {
+    border-radius: 10px 0 0 0;
+}
+#result table > thead th:last-child {
+    border-radius: 0 10px 0 0;
+}
+
+#result table > thead tr {
+    background-color: transparent;
+}
+#result table > thead th {
+    border: none;
+}
+th, td {
+    padding: 1rem;
+    border: 1px solid #444;
+    text-align: left;
+    vertical-align: middle;
+    color: var(--white); 
+}
+th {
+    background-color: #444; 
+    font-weight: bold;
+    text-align: left;
+}
+tr:nth-child(even) {
+    background-color: #333;
+}
+tr:nth-child(odd) {
+    background-color: #222;
+}
