@@ -74,7 +74,6 @@ Then, you will need to run the following command in another terminal:
 npm start
 ```
 
-
 ## Contributing
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
