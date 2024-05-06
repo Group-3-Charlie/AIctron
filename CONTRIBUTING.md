@@ -15,7 +15,7 @@ Before starting, please check [README.md](https://github.com/Group-3-Charlie/AIc
 ### Opening issues
 
 - You can report bugs or suggest new features or enhancements.
-- **Ensure the issue was not already reported** by searching on GitHub under [Issues](https://github.com/Group-3-Charlie/AIctron).
+- **Ensure the issue was not already reported** by searching on GitHub under [Issues](https://github.com/Group-3-Charlie/AIctron/issues).
 - And then, [open a new issue](https://github.com/Group-3-Charlie/AIctron/issues/new/choose).
 
 ### First Code Contribution
