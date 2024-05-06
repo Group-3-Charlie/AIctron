@@ -62,6 +62,7 @@ npm install
 
 ## Usage
 
+### Backend
 To start the app, you will need to run the following command in your terminal:
 
 ```bash
@@ -69,13 +70,14 @@ cd code
 python3 __init__.py
 ```
 
-Then, you will need to run the following command in another terminal:
+### Frontend
+For the frontend, run the following command in another terminal:
 
 ```bash
 npm run dev:web
 ```
 
-If you want to run the desktop app, then run this command in another terminal:
+Furthermore, run this command in another terminal if you want to run the desktop app :
 
 ```bash
 npm run dev:electron
