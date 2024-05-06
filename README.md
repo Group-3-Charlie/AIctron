@@ -80,7 +80,6 @@ If you want to run the desktop app, then run this command in another terminal:
 npm run dev:electron
 ```
 
-
 ## Contributing
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
