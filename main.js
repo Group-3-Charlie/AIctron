@@ -1,10 +1,15 @@
 const { app, BrowserWindow } = require('electron');
+const path = require('path');
 
 let mainWindow;
+let pathToLoad;
+const prodPath = 'aictron-app/build/index.html';
+const devURL = 'http://localhost:3005';
+const gotTheLock = app.requestSingleInstanceLock();
 
-function createWindow() {
+function createMainWindow() {
     // Create the browser window
-    const mainWindow = new BrowserWindow({
+    mainWindow = new BrowserWindow({
         width: 1440,
         height: 800,
         webPreferences: {
@@ -12,11 +17,9 @@ function createWindow() {
         }
     });
 
-    // Load your HTML file
-    mainWindow.loadURL('http://localhost:3001');
-
-    // Open the DevTools (optional)
-    mainWindow.webContents.openDevTools();
+    // Loading the index.html of the app or the dev server URL
+    pathToLoad = app.isPackaged ? prodPath : devURL;
+    mainWindow.loadURL(pathToLoad);
 
     // Event when the window is closed
     mainWindow.on('closed', function () {
@@ -25,20 +28,34 @@ function createWindow() {
     });
 }
 
-// Event when Electron has finished initialization
-app.on('ready', createWindow);
+app
+  .whenReady()
+  .then(() => {
+    if (!gotTheLock) {
+      app.quit();
+      throw new Error('Another instance of the app is already running');
+    }
+  })
+  .then(createMainWindow)
+  .then(() => {
+    if (!app.isPackaged) {
+      windowManager.mainWindow?.webContents.openDevTools();
+    }
+  })
+  .then(() => {
+    app.on('activate', () => {
+        // On macOS, re-create a window when the dock icon is clicked and no other windows are open
+        if (mainWindow === null) {
+            createMainWindow();
+        }
+    })
+})
+
 
 // Quit when all windows are closed
 app.on('window-all-closed', function () {
     // On macOS, quit the app when the window is closed
     if (process.platform !== 'darwin') {
         app.quit();
-    }
-});
-
-app.on('activate', function () {
-    // On macOS, re-create a window when the dock icon is clicked and no other windows are open
-    if (mainWindow === null) {
-        createWindow();
     }
 });
