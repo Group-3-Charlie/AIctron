@@ -8,81 +8,129 @@ skinparam component {
     ArrowColor Black
 }
 
-package Frontend/Electron{
-    package "Components" {
-        [App]
-        [Upload]
-        [Table]
-        [Download]
-        [Predict]
+package "Backend" {
+    object "api.aictron.arnaudmichel.fr" as api_dns
+
+    class "API" {
+        - app: Flask
+        + __init__()
+        + define_routes()
+        + _get_routes()
+        + _get_data(data)
+        + run()
     }
 
-    package ReactJs {
-        package Pages {
-            [Home]
-            [UploadPage]
-            [PredictPage]
-        }
-
-        package ReactComponents {
-            [Header]
-            [Footer]
-        }
-        Pages --> [Footer]
-        Pages --> [Header]
+    class api_logic {
+        + upload(cls, request)
+        + select_target(cls, request)
+        + predict(cls, request)
+        + get_prediction(cls)
+        + get_columns(cls)
+        + get_columns_without_target(cls)
     }
 
-    [App] --> [Home]
-    [Home] <--> [UploadPage]
-    [Home] <--> [PredictPage]
-    [UploadPage] <--> [PredictPage]
-    [UploadPage] --> [Upload]
-    [PredictPage] --> [Predict]
+    class ai_logic {
+        - df: pd.DataFrame
+        - imputer: SimpleImputer
+        - modef: SklearnModel
+        - target: str
+        + load_data(cls, filepaths)
+        + select_target(cls, target)
+        + train(cls)
+        + normalisation(cls, dataToNormalise)
+        + predict(cls, dataToPredict)
+    }
+
+    class dataset.csv {
+    }
+
+    api_dns --> "API"
+    api_dns <-- "API"
+    "API" --> "api_logic"
+    "api_logic" --> "ai_logic"
+    "api_logic" --> "dataset.csv"
+    "ai_logic" --> "dataset.csv"
 }
 
-[App] --> [Upload]
-[App] --> [Table]
-[App] --> [Download]
-[App] --> [Predict]
+package Frontend[React] {
+    object "aictron.arnaudmichel.fr" as frontend_dns
 
-[Upload] --> [Table]
-[Predict] --> [Table]
-[Download] --> [Table]
+    class "App" {
 
-[Table] --> [Predict]
-
-package Backend {
-    package "Flask" {
-        [app.py]
     }
 
-    package AI {
-        [model.py]
-        [predict.py]
+    package components as maincomp {
+        class Layout {
+            + children: ReactNode
+        }
+        class Header {
+        }
+        class Footer {
+        }
+
+        Header --> Layout
+        Footer --> Layout
     }
 
-    package "CSV" {
-        [dataset.csv]
+    package pages {
+
+        class "Home" {
+
+        }
+
+        class "Contribute" {
+
+        }
+        package "components" {
+            class "Upload" {
+                + handleFileChange()
+            class "ColumnChoice" {
+                - columns: []
+                - isLoading: bool
+                + useEffect()
+                + handleSubmit()
+            }
+            class "NewValues" {
+                - columns: []
+                + handleSubmit()
+                + handleFileChange()
+            }
+            class "ResultFile" {
+                - tableRows: []
+                - values: []
+                + handleSubmit()
+            }
+            class "ResultText" {
+                - selected_column: str
+                - prediction: str
+            }
+        }
+        Layout --|> "Home"
+        Layout --|> "Contribute"
+        Layout --|> "Upload"
+        Layout --|> "ColumnChoice"
+        Layout --|> "NewValues"
+        Layout --|> "ResultFile"
+        Layout --|> "ResultText"
+
+        "Home" -> "Upload"
+        "Home" -> "Contribute"
+        "Upload" -> "ColumnChoice"
+        "ColumnChoice" -> "NewValues"
+        "NewValues" -> "ResultFile"
     }
 
-    [app.py] --> [model.py]
-    [app.py] --> [predict.py]
-    [app.py] --> [dataset.csv]
-    [model.py] --> [dataset.csv]
-    [predict.py] --> [dataset.csv]
-
-
-    [model.py] --> [app.py]
-
-    [predict.py] --> [app.py]
+    frontend_dns --> "App"
+    "App" -> maincomp
+    "App" --> pages
 
 }
 
-[App] --> [app.py]
-[Upload] --> [app.py]
-[Table] --> [app.py]
-[Download] --> [app.py]
-[Predict] --> [app.py]
+"Upload" ----> api_dns: upload the dataset.csv
+"ColumnChoice" ----> api_dns: select the target column
+"NewValues" ----> api_dns: predict the new values
+"ResultFile" ----> api_dns: download the result file
+"ResultText" ----> api_dns: get the prediction
 
 
 footer Made by: Arnaud Michel and Quentin Macheda
