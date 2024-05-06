@@ -1,5 +1,46 @@
 {
+  "name": "aictron",
+  "version": "0.0.1",
+  "author": "AIctron",
+  "license": "MIT",
+  "description": "AIctron is a web app that allows its users to get predictive data analysis by inserting any csv dataset.",
+  "main": "./main.js",
+  "workspaces": [
+    "aictron-app"
+  ],
+  "scripts": {
+    "dev:web": "npm run dev --workspace=aictron-app",
+    "dev:electron": "electron .",
+    "build:web": "npm run build --workspace=aictron-app",
+    "build": "npm run build:web && electron-builder"
+  },
   "dependencies": {
     "papaparse": "^5.4.1"
+  },
+  "devDependencies": {
+    "electron": "^30.0.2",
+    "electron-builder": "^24.13.3"
+  },
+  "build": {
+    "appId": "aictron.ai",
+    "productName": "AIctron",
+    "dmg": {
+      "title": "aictron-${os}-${arch}-${version}.${ext}",
+      "icon": "icons/icon.png"
+    },
+    "linux": {
+      "target": [
+        "deb"
+      ],
+      "category": "Utility",
+      "icon": "icons/"
+    },
+    "win": {
+      "icon": "icons/icon.png",
+      "target": [
+        "nsis"
+      ]
+    },
+    "artifactName": "aictron-${os}-${arch}-${version}.${ext}"
   }
 }
