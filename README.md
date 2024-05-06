@@ -71,7 +71,13 @@ python3 __init__.py
 Then, you will need to run the following command in another terminal:
 
 ```bash
-npm start
+npm run dev:web
+```
+
+If you want to run the desktop app, then run this command in another terminal:
+
+```bash
+npm run dev:electron
 ```
 
 
