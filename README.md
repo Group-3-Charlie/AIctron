@@ -44,6 +44,7 @@ To install the app, you will need to have Python installed on your computer. You
 Once Python is installed, you can install the required libraries by running the following command in your terminal:
 
 ```bash
+cd Backend
 python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
