@@ -41,6 +41,7 @@ The user will be able to upload a dataset, select the target column and then get
 ### Backend
 To install the app, you will need to have Python installed on your computer. You can download it from the [official website](https://www.python.org/downloads/).
 
+
 Once Python is installed, you can install the required libraries by running the following command in your terminal:
 
 ```bash
